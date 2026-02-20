@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskMaster Pro - Profile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../public/css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container header-content">
+            <a href="../public/index.html" class="logo">
+                <span style="color: #6366f1;">TaskMaster</span> Pro
+            </a>
+            <nav class="main-nav">
+                <button class="hamburger-menu" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav-list">
+                    <li><a href="../public/index.html">Index</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="profile.html" class="nav-active">Profile</a></li>
+                    <li><a href="settings.html">Settings</a></li>
+                    <li><button id="logout-button" class="btn btn-secondary btn-small">Logout</button></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="dashboard-page">
+        <div class="dashboard-container container">
+            <aside class="sidebar">
+                <div class="user-greeting">
+                    <p>Welcome, <strong id="user-name">User</strong>!</p>
+                </div>
+                <nav class="sidebar-nav">
+                    <ul>
+                        <li><a href="dashboard.html"><i class="fas fa-columns"></i> Dashboard</a></li>
+                        <li><a href="profile.html" class="sidebar-nav-active"><i class="fas fa-user-circle"></i> Profile</a></li>
+                        <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+                        <li><button id="sidebar-logout-button" class="btn btn-secondary btn-block"><i class="fas fa-sign-out-alt"></i> Logout</button></li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <section class="main-content">
+                <h2 class="section-title">Your Profile</h2>
+                <div class="profile-card">
+                    <form id="profile-form" class="auth-form">
+                        <div class="profile-picture-upload">
+                            <img id="profile-img-preview" src="https://via.placeholder.com/100/6366f1/ffffff?text=User" alt="Profile Picture" class="profile-img">
+                            <label for="profile-picture-input" class="btn btn-secondary btn-small">
+                                <i class="fas fa-upload"></i> Upload Image
+                            </label>
+                            <input type="file" id="profile-picture-input" style="display: none;" accept="image/*">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="profile-name">Full Name</label>
+                            <input type="text" id="profile-name" name="name" required>
+                            <p class="input-error" id="profile-name-error"></p>
+                        </div>
+                        <div class="form-group">
+                            <label for="profile-email">Email Address</label>
+                            <input type="email" id="profile-email" name="email" required>
+                            <p class="input-error" id="profile-email-error"></p>
+                        </div>
+                        
+                        <div id="profile-message" class="info-message" style="display: none;"></div>
+                        <div id="profile-error" class="error-message" style="display: none;"></div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary" id="profile-save-button">
+                                <span id="profile-save-text">Save Changes</span>
+                                <span id="profile-save-spinner" class="spinner" style="display: none;"></span>
+                            </button>
+                            <button type="button" class="btn btn-secondary" id="profile-cancel-button">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+
+                <h2 class="section-title" style="margin-top: var(--spacing-xl);">Change Password</h2>
+                <div class="password-card">
+                    <form id="password-form" class="auth-form">
+                        <div class="form-group">
+                            <label for="current-password">Current Password</label>
+                            <input type="password" id="current-password" name="currentPassword" required>
+                            <p class="input-error" id="current-password-error"></p>
+                        </div>
+                        <div class="form-group">
+                            <label for="new-password">New Password</label>
+                            <input type="password" id="new-password" name="newPassword" required>
+                            <p class="input-error" id="new-password-error"></p>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirm-new-password">Confirm New Password</label>
+                            <input type="password" id="confirm-new-password" name="confirmNewPassword" required>
+                            <p class="input-error" id="confirm-new-password-error"></p>
+                        </div>
+                        <div id="password-message" class="info-message" style="display: none;"></div>
+                        <div id="password-error" class="error-message" style="display: none;"></div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary" id="password-change-button">
+                                <span id="password-change-text">Change Password</span>
+                                <span id="password-change-spinner" class="spinner" style="display: none;"></span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="main-footer minimal">
+        <div class="container footer-content">
+            <p>&copy; 2023 TaskMaster Pro. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../public/js/main.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
