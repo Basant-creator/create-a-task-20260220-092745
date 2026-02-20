@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskMaster Pro - Settings</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../public/css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container header-content">
+            <a href="../public/index.html" class="logo">
+                <span style="color: #6366f1;">TaskMaster</span> Pro
+            </a>
+            <nav class="main-nav">
+                <button class="hamburger-menu" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav-list">
+                    <li><a href="../public/index.html">Index</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="settings.html" class="nav-active">Settings</a></li>
+                    <li><button id="logout-button" class="btn btn-secondary btn-small">Logout</button></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="dashboard-page">
+        <div class="dashboard-container container">
+            <aside class="sidebar">
+                <div class="user-greeting">
+                    <p>Welcome, <strong id="user-name">User</strong>!</p>
+                </div>
+                <nav class="sidebar-nav">
+                    <ul>
+                        <li><a href="dashboard.html"><i class="fas fa-columns"></i> Dashboard</a></li>
+                        <li><a href="profile.html"><i class="fas fa-user-circle"></i> Profile</a></li>
+                        <li><a href="settings.html" class="sidebar-nav-active"><i class="fas fa-cog"></i> Settings</a></li>
+                        <li><button id="sidebar-logout-button" class="btn btn-secondary btn-block"><i class="fas fa-sign-out-alt"></i> Logout</button></li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <section class="main-content">
+                <h2 class="section-title">App Settings</h2>
+                <div class="settings-card">
+                    <form id="settings-form" class="auth-form">
+                        <div class="form-group">
+                            <label for="notification-email">Email Notifications</label>
+                            <select id="notification-email" name="notificationEmail">
+                                <option value="immediate">Immediate</option>
+                                <option value="daily">Daily Digest</option>
+                                <option value="weekly">Weekly Digest</option>
+                                <option value="none">None</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="theme-preference">Theme Preference</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="theme" value="light" checked> Light</label>
+                                <label><input type="radio" name="theme" value="dark"> Dark (Coming Soon)</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="default-task-status">Default New Task Status</label>
+                            <select id="default-task-status" name="defaultTaskStatus">
+                                <option value="pending">Pending</option>
+                                <option value="in-progress">In Progress</option>
+                            </option>
+                        </select>
+                        </div>
+
+                        <div id="settings-message" class="info-message" style="display: none;"></div>
+                        <div id="settings-error" class="error-message" style="display: none;"></div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary" id="settings-save-button">
+                                <span id="settings-save-text">Save Settings</span>
+                                <span id="settings-save-spinner" class="spinner" style="display: none;"></span>
+                            </button>
+                            <button type="button" class="btn btn-secondary" id="settings-cancel-button">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+
+                <h2 class="section-title" style="margin-top: var(--spacing-xl);">Account Management</h2>
+                <div class="account-card">
+                    <button id="delete-account-button" class="btn btn-danger">
+                        <i class="fas fa-trash-alt"></i> Delete Account
+                    </button>
+                    <p style="margin-top: var(--spacing-sm); font-size: 0.9rem; color: var(--text-color-light);">
+                        Deleting your account is permanent and will remove all your data.
+                    </p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="main-footer minimal">
+        <div class="container footer-content">
+            <p>&copy; 2023 TaskMaster Pro. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../public/js/main.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
