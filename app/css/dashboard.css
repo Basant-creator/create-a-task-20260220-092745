@@ -1,0 +1,436 @@
+/* 
+Create comprehensive CSS with:
+- CSS variables for colors/fonts
+- Responsive breakpoints
+- Modern layout (Flexbox/Grid)
+- Hover effects and transitions
+- Consistent spacing
+- Mobile-first approach
+*/
+
+/* Dashboard Page Layout */
+.dashboard-page {
+    padding-top: var(--spacing-lg); /* Add space below header */
+}
+
+.dashboard-container {
+    display: grid;
+    grid-template-columns: 1fr; /* Mobile: single column */
+    gap: var(--spacing-lg);
+    align-items: flex-start; /* Aligns content to the top */
+}
+
+/* Sidebar */
+.sidebar {
+    background-color: var(--white);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--box-shadow-sm);
+    text-align: center;
+    order: 2; /* Move sidebar below main content on mobile */
+}
+
+.user-greeting {
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-md);
+    border-bottom: 1px solid var(--light-gray);
+}
+
+.user-greeting p {
+    font-size: 1.1rem;
+    color: var(--dark-gray);
+    margin: 0;
+}
+
+.user-greeting strong {
+    color: var(--primary-color);
+}
+
+.sidebar-nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.sidebar-nav li a, .sidebar-nav button {
+    display: flex;
+    align-items: center;
+    padding: var(--spacing-sm) var(--spacing-md);
+    color: var(--text-color);
+    font-weight: 500;
+    border-radius: var(--border-radius-sm);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.sidebar-nav li a i, .sidebar-nav button i {
+    margin-right: var(--spacing-sm);
+    font-size: 1.1rem;
+}
+
+.sidebar-nav li a:hover,
+.sidebar-nav button:hover {
+    background-color: var(--light-gray);
+    color: var(--primary-color);
+}
+
+.sidebar-nav li a.sidebar-nav-active {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.sidebar-nav li a.sidebar-nav-active i {
+    color: var(--white);
+}
+
+.sidebar-nav button {
+    margin-top: var(--spacing-md);
+}
+
+/* Main Content Area */
+.main-content {
+    order: 1; /* Main content above sidebar on mobile */
+}
+
+.section-title {
+    margin-bottom: var(--spacing-lg);
+    font-size: 2rem;
+    color: var(--dark-gray);
+}
+
+.quick-actions {
+    margin-bottom: var(--spacing-lg);
+}
+
+/* Task Grid */
+.tasks-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+}
+
+.task-card {
+    background-color: var(--white);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--box-shadow-sm);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    position: relative;
+    border-left: 5px solid var(--light-gray); /* Default border */
+}
+
+.task-card.status-pending { border-left-color: #f59e0b; /* Amber */ }
+.task-card.status-in-progress { border-left-color: var(--primary-color); }
+.task-card.status-completed { border-left-color: #10b981; /* Green */ }
+
+.task-card h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    color: var(--dark-gray);
+}
+
+.task-card p {
+    font-size: 0.9rem;
+    color: var(--text-color-light);
+    margin-bottom: 0;
+}
+
+.task-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    color: var(--text-color-light);
+    margin-top: var(--spacing-xs);
+}
+
+.task-actions {
+    display: flex;
+    gap: var(--spacing-xs);
+    margin-top: var(--spacing-sm);
+    justify-content: flex-end; /* Align actions to the right */
+}
+
+.task-actions .btn-icon {
+    background: none;
+    border: none;
+    color: var(--text-color-light);
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0.5rem;
+    border-radius: var(--border-radius-sm);
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.task-actions .btn-icon:hover {
+    background-color: var(--light-gray);
+    color: var(--primary-color);
+}
+
+.task-actions .btn-delete:hover {
+    color: var(--danger-color);
+}
+
+/* Info Card (for no tasks) */
+.info-card {
+    background-color: var(--white);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--box-shadow-sm);
+    text-align: center;
+    color: var(--text-color-light);
+}
+.info-card p {
+    margin: 0;
+}
+
+/* Modal for Task Form */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.open {
+    display: flex; /* Show when open */
+}
+
+.modal-content {
+    background-color: var(--white);
+    margin: auto;
+    padding: var(--spacing-xl);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--box-shadow-md);
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+}
+
+.modal-content h3 {
+    margin-bottom: var(--spacing-lg);
+    text-align: center;
+    color: var(--dark-gray);
+}
+
+.modal-content .close-button {
+    color: var(--text-color-light);
+    position: absolute;
+    top: var(--spacing-md);
+    right: var(--spacing-md);
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.modal-content .close-button:hover,
+.modal-content .close-button:focus {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+#task-form .form-group {
+    margin-bottom: var(--spacing-md);
+}
+
+#task-form label {
+    display: block;
+    margin-bottom: var(--spacing-xs);
+    font-weight: 600;
+    color: var(--text-color-light);
+}
+
+#task-form input[type="text"],
+#task-form input[type="date"],
+#task-form textarea,
+#task-form select {
+    width: 100%;
+    padding: var(--spacing-sm);
+    border: 1px solid var(--light-gray);
+    border-radius: var(--border-radius-sm);
+    font-size: var(--font-size-base);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#task-form input:focus,
+#task-form textarea:focus,
+#task-form select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+/* Profile and Settings Pages */
+.profile-card, .settings-card, .password-card, .account-card {
+    background-color: var(--white);
+    padding: var(--spacing-xl);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--box-shadow-sm);
+    margin-bottom: var(--spacing-xl);
+}
+
+.profile-picture-upload {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.profile-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto var(--spacing-md);
+    border: 3px solid var(--primary-color);
+}
+
+.form-actions {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+    justify-content: flex-end;
+}
+
+.info-message {
+    background-color: #dbeafe; /* light blue */
+    color: #2563eb; /* blue */
+    border: 1px solid #3b82f6; /* stronger blue */
+    padding: var(--spacing-sm);
+    border-radius: var(--border-radius-sm);
+    margin-bottom: var(--spacing-md);
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.btn-danger {
+    background-color: var(--danger-color);
+    color: var(--white);
+}
+
+.btn-danger:hover {
+    background-color: #dc2626; /* Darker red */
+    color: var(--white);
+}
+
+.radio-group {
+    display: flex;
+    gap: var(--spacing-md);
+    align-items: center;
+    margin-top: var(--spacing-xs);
+}
+
+.radio-group label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 400; /* Override default label bold */
+}
+
+.radio-group input[type="radio"] {
+    margin-right: 0.5rem;
+    accent-color: var(--primary-color);
+}
+
+
+/* Responsive Design */
+
+/* Tablet (768px and up) */
+@media (min-width: 768px) {
+    .dashboard-container {
+        grid-template-columns: 250px 1fr; /* Sidebar fixed width, main content fluid */
+    }
+
+    .sidebar {
+        order: 0; /* Sidebar first on larger screens */
+        text-align: left;
+    }
+
+    .user-greeting {
+        text-align: left;
+    }
+
+    .sidebar-nav ul {
+        gap: var(--spacing-xs);
+    }
+    
+    .main-content {
+        order: 0; /* Main content second on larger screens */
+    }
+
+    .tasks-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+}
+
+/* Desktop (1024px and up) */
+@media (min-width: 1024px) {
+    .dashboard-container {
+        grid-template-columns: 280px 1fr;
+        gap: var(--spacing-xl);
+    }
+    .profile-card, .settings-card, .password-card, .account-card {
+        padding: var(--spacing-xxl);
+    }
+}
+
+/* Mobile-specific adjustments (under 768px) */
+@media (max-width: 767px) {
+    .dashboard-container {
+        padding-top: var(--spacing-sm);
+    }
+    .sidebar {
+        margin-top: var(--spacing-lg);
+        padding: var(--spacing-md);
+    }
+    .sidebar-nav ul {
+        flex-direction: row; /* Horizontal nav for mobile sidebar */
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: var(--spacing-xs);
+    }
+    .sidebar-nav li {
+        flex-grow: 1; /* Make items take equal space */
+        min-width: 120px;
+    }
+    .sidebar-nav li a {
+        justify-content: center; /* Center icons and text */
+        font-size: 0.9rem;
+        padding: var(--spacing-xs) var(--spacing-sm);
+    }
+    .sidebar-nav li a i {
+        margin-right: 0.5rem;
+    }
+    .sidebar-nav #sidebar-logout-button {
+        display: none; /* Hide sidebar logout on small screens as it's in header */
+    }
+    .main-content {
+        padding: 0 var(--spacing-sm);
+    }
+    .section-title {
+        font-size: 1.75rem;
+        text-align: center;
+    }
+    .quick-actions {
+        text-align: center;
+    }
+    .modal-content {
+        padding: var(--spacing-lg);
+    }
+    .profile-card, .settings-card, .password-card, .account-card {
+        padding: var(--spacing-lg);
+    }
+    .form-actions {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+    .form-actions .btn {
+        width: 100%;
+    }
+}
