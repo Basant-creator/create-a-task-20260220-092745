@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskMaster Pro - Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../public/css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container header-content">
+            <a href="../public/index.html" class="logo">
+                <span style="color: #6366f1;">TaskMaster</span> Pro
+            </a>
+            <nav class="main-nav">
+                <button class="hamburger-menu" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav-list">
+                    <li><a href="../public/index.html">Index</a></li>
+                    <li><a href="dashboard.html" class="nav-active">Dashboard</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="settings.html">Settings</a></li>
+                    <li><button id="logout-button" class="btn btn-secondary btn-small">Logout</button></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="dashboard-page">
+        <div class="dashboard-container container">
+            <aside class="sidebar">
+                <div class="user-greeting">
+                    <p>Welcome, <strong id="user-name">User</strong>!</p>
+                </div>
+                <nav class="sidebar-nav">
+                    <ul>
+                        <li><a href="dashboard.html" class="sidebar-nav-active"><i class="fas fa-columns"></i> Dashboard</a></li>
+                        <li><a href="profile.html"><i class="fas fa-user-circle"></i> Profile</a></li>
+                        <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+                        <li><button id="sidebar-logout-button" class="btn btn-secondary btn-block"><i class="fas fa-sign-out-alt"></i> Logout</button></li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <section class="main-content">
+                <h2 class="section-title">Your Tasks</h2>
+                <div class="quick-actions">
+                    <button id="add-task-button" class="btn btn-primary"><i class="fas fa-plus"></i> Add New Task</button>
+                </div>
+
+                <div id="task-form-modal" class="modal">
+                    <div class="modal-content">
+                        <span class="close-button">&times;</span>
+                        <h3 id="task-form-title">Create New Task</h3>
+                        <form id="task-form">
+                            <input type="hidden" id="task-id">
+                            <div class="form-group">
+                                <label for="task-title">Task Title</label>
+                                <input type="text" id="task-title" name="title" required>
+                                <p class="input-error" id="task-title-error"></p>
+                            </div>
+                            <div class="form-group">
+                                <label for="task-description">Description</label>
+                                <textarea id="task-description" name="description" rows="3"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="task-due-date">Due Date</label>
+                                <input type="date" id="task-due-date" name="dueDate">
+                            </div>
+                            <div class="form-group">
+                                <label for="task-status">Status</label>
+                                <select id="task-status" name="status">
+                                    <option value="pending">Pending</option>
+                                    <option value="in-progress">In Progress</option>
+                                    <option value="completed">Completed</option>
+                                </select>
+                            </div>
+                            <div id="task-form-error" class="error-message" style="display: none;"></div>
+                            <button type="submit" class="btn btn-primary btn-block">
+                                <span id="task-form-text">Save Task</span>
+                                <span id="task-form-spinner" class="spinner" style="display: none;"></span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <div id="tasks-list" class="tasks-grid">
+                    <!-- Tasks will be loaded here by JavaScript -->
+                    <div class="info-card" id="no-tasks-message">
+                        <p>No tasks yet. Click "Add New Task" to get started!</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="main-footer minimal">
+        <div class="container footer-content">
+            <p>&copy; 2023 TaskMaster Pro. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../public/js/main.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
